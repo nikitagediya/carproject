@@ -237,7 +237,7 @@ ul li a:hover{
     session_start();
     if(!isset($_SESSION['email'])) // The exact conditional depends on your login-system implementation
     {
-        header('Location: index.php'); // Instructs the visitor's browser to redirect
+        header('Location: index1.php'); // Instructs the visitor's browser to redirect
         exit; // <-- What you want. Prevents further code from being executed, works as a security measure.
     }
  

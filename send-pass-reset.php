@@ -58,14 +58,14 @@ try {
             echo"
             <script>
               alert('Password reset link sent to mail');
-              window.location.href='index.php';
+              window.location.href='index1.php';
             </script>
             ";
         } else {
             echo"
             <script>
               alert('Server Down! try again later');
-              window.location.href='index.php';
+              window.location.href='index1.php';
             </script>
             ";
         }

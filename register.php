@@ -32,7 +32,7 @@ if(isset($_POST['regs']))
         $res=mysqli_query($con,$sql2);
         if(mysqli_num_rows($res)>0){
             echo '<script>alert("EMAIL ALREADY EXISTS PRESS OK FOR LOGIN!!")</script>';
-            echo '<script> window.location.href = "index.php";</script>';
+            echo '<script> window.location.href = "index1.php";</script>';
 
         }
         else{
@@ -59,7 +59,7 @@ if(isset($_POST['regs']))
           // }
         if($result){
             echo '<script>alert("Registration Successful Press ok to login")</script>';
-            echo '<script> window.location.href = "index.php";</script>';       
+            echo '<script> window.location.href = "index1.php";</script>';       
            }
         else{
             echo '<script>alert("please check the connection")</script>';
@@ -301,7 +301,7 @@ input#name{
             <br>
 
             <input type="submit" class="btnn"  value="REGISTER NOW!" name="regs" style="background-color: cadetblue;color: white"><br>
-            <button id="back"><a href="index.php">BACK TO HOME</a></button>
+            <button id="back"><a href="index1.php">BACK TO HOME</a></button>
         
         
         </input>

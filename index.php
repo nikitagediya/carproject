@@ -1,308 +1,343 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <title>CAR RENTAL</title>
-    <script type="text/javascript">
-        window.history.forward();
-        function noBack() {
-            window.history.forward();
-        }
-    </script>
-    <link  rel="stylesheet" href="css/style.css">
-    <script type="text/javascript">
-        function preventBack() {
-            window.history.forward(); 
-        }
-          
-        setTimeout("preventBack()", 0);
-          
-        window.onunload = function () { null };
-    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ND CAR LEASE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 </head>
 <body>
 
-
-
-<?php
-require_once('connection.php');
-    if(isset($_POST['login']))
-    {
-        $email=$_POST['email'];
-        $pass=$_POST['pass'];
-        
-        
-        if(empty($email)|| empty($pass))
-        {
-            echo '<script>alert("please fill the blanks")</script>';
-        }
-
-        else{
-            $query="select * from users where EMAIL='$email'";
-            $res=mysqli_query($con,$query);
-            if($row=mysqli_fetch_assoc($res)){
-                $db_password = $row['PASSWORD'];
-                if(md5($pass)  == $db_password)
-                {
-                    header("location: cardetails.php");
-                    session_start();
-                    $_SESSION['email'] = $email;
-                    
-                }
-                else{
-                    echo '<script>alert("Enter a proper password")</script>';
-                
-                }
-
-
-
-                
-
-
-
-            }
-            else{
-                echo '<script>alert("enter a proper email")</script>';
-            }
-        }
-    }
-
+    <style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
   
-?>
-
-
-<style>
-
-.hai{
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  .column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+  
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #54658b;
+    color: white;
+    background-image: url(images/car3.jpg);
     width: 100%;
-    background-image: url(images/indexback.jpg);
+    background-repeat:no-repeat;
+	background-attachment:fixed;
     background-position: center;
     background-size: cover;
     height: 100vh;
-    animation: infiniteScrollBg 50s linear infinite;
-}
+  }
 
-.form{
-    width: 450px;
-    height: 400px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
-    position: absolute;
-    top:-20px;
-    left: 50px;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 120px;
-}
-
-.form h2{
-    width:400px;
-    font-family: sans-serif;
+  .about-section h1{
+    font-size: 75px;
     text-align: center;
-    color: blue;
-    font-size: 22px;
-    background-color: white;
-    border-radius: 5px;
-    margin: 2px;
+    margin-top: 440px;
+  }
+  
+  .about-section p{
+    font-size: 40px;
+    text-align: center;
+    color: lightcoral;
+    margin-top: -45px;
+    word-spacing: 20px;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title {
+    color: grey;
+  }
+  
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
     padding: 8px;
-    margin-left:15px;
-    margin-top: 25px;
-    
-    
-}
-
-.form input{
-    width: 410px;
-    height: 35px;
-    background: transparent;
-    border-bottom: 1px solid blue;
-    border-top: none;
-    border-right: none;
-    border-left:none;
-    color:#fff;
-    font-size: 15px;
-    letter-spacing: 1px;
-    margin-top: 40px;
-    margin-left:17px;
-    font-family: sans-serif;
-}
-.form input:focus{
-    outline: none;
-}
-
-.btnn{
-    width: 240px;
-    height: 40px;
-    background: #5072A7;
-    border:orange;
-    margin-top: 30px;
-    font-size: 18px;
-    
-    cursor: pointer;
-    color:#fff;
-    transition: 0.4s ease;
-}
-
-.btnn:hover{
-    background: #fff;
-    color:blue;
-}
-
-.btnn a{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
-
-.form .link{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    padding-top: 40px;
+    color: white;
+    background-color: #000;
     text-align: center;
-    color: #fff;
-}
-
-.form .link a{
-    text-decoration: none;
-    color:blue;
-}
-
-.navbar{
-    
-    width: 99.1%;
-    height: 75px;
-    margin: auto;
-    background-color: black;
-    overflow: hidden;
-    padding: 5px 7px;
-    
-}
-.logo{
-    color: lightblue;
-    font-size: 28px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight:bolder;
-    padding-left: 20px;
-    float:left;
-    padding-top: 10px;
-    margin-left: 70px;
-}
-
-ul{
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-ul li{
-    list-style: none;
-    margin-left: 150px;
-    margin-top: 27px;
-    font-size: 14px;
-
-}
-
-ul li a{
-    text-decoration: none;
-    color: white;
-    font-family: Arial;
-    font-weight: bold;
-    transition: 0.4s ease-in-out;
-
-}
-
-ul li a:hover{
-    color: #6699CC;
-}
-
-.adminbtn{
-    width: 150px;
-    height: 40px;
-    background: black;
-    border:none;
-    
-    font-size: 18px;
-    border-radius: 5px;
     cursor: pointer;
-    color:#fff;
-    transition: 0.4s ease;
+    width: 100%;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
 
-}
-.adminbtn a{
-    text-decoration: none;
-    color: white;
-}
+  /* CSS for footer */
+  .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #33363b;
+      padding: 40px 80px;
+    }
 
-.adminbtn:hover{
-    background-color: #5072A7;
-}
-.adminbtn a:hover{
-    text-decoration: none;
-    color: black;
-}
-.pass{
-    margin-top:15px;
-    margin-left:15px;
-    text-decoration: none;
-    color:blue;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.pass a{
-    text-decoration: none;
-    color:cornflowerblue;
-    
-}
-.pass a:hover{
-    color:white;
-}
+    .footer .copy {
+      color: #fff;
+      width: 700px;
+      text-align: justify;
+    }
 
+    .bottom-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .bottom-links .links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .bottom-links .links span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #080808;
+      text-transform: uppercase;
+      margin: 10px 0;
+    }
+
+    .bottom-links .links a {
+      text-decoration: none;
+      color: #c5c5c5;
+      padding: 10px 10px;
+    }
+
+    .fa {  
+  padding: 20px;  
+text-align: center;  
+  margin: 3px 3px;  
+  font-size: 25px;  
+  width: 45px;  
+}  
+.fa-facebook {  
+  background: #3B5998;  
+  color: white;  
+}  
+.fa-twitter {  
+  background: #55ACEE;  
+  color: white;  
+}  
+
+.fa-linkedin {  
+  background: #007bb5;  
+  color: white;  
+}  
+.fa-instagram {  
+  background: #125688;  
+  color: white;  
+}  
+
+.fa-google {  
+  background: #dd4b39;  
+  color: white;  
+}  
+
+.fa:hover {  
+    opacity: 0.9;  
+}  
 </style>
-    <div class="hai">
-        <div class="navbar">
-            <div class="icon">
-                <h2 class="logo">ND CAR LEASE</h2>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="aboutus2.html">ABOUT</a></li>
-                    <li><a href="services.html">SERVICES</a></li>
-                    
-                    <li><a href="contactus2.html">CONTACT</a></li>
-                  <li> <button class="adminbtn"><a href="adminlogin.php">ADMIN LOGIN</a></button></li>
-                </ul>
-            </div>
-            
-          
+
+<div class="about-section">
+    
+    <h1>YOUR journey, our PRIORITY!</h1>
+    <p>Get a car wherever and whenever you need it.</p>
+    <h3>scroll for more > </h3>
+  </div>
+  
+  <h2 style="text-align:center">Our Cars Collection</h2>
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="images/swift.jpg" alt="Jane" style="width:100%">
+        <div class="container">
+          <h2>MARUTI SUZUKI SWIFT DZIRE</h2>
+          <p class="title">ND- MARUTI</p>
+          <p>Lorem ipsum dolor sit amet.
+          </p>
+          <p>jane@example.com</p>
+          <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
         </div>
-        <div class="content">
-            <!-- <h1>NEED A <br><span>CAR</span><br><span>RENTAL?</span></h1>
-            <p class="par">Live the life of Luxury.<br>
-                Just rent a car of your wish from our vast collection.<br>Enjoy every moment with your family<br>
-                 Join us to make this family vast.  </p>
-            <button class="cn"><a href="register.php">JOIN US</a></button> -->
-            <div class="form">
-                <h2>Login Here</h2>
-                <form method="POST"> 
-                <input type="email" name="email" placeholder="Enter Email Here">
-                <input type="password" name="pass" placeholder="Enter Password Here">
-                <div class="pass"><a href="./reset-pass.php">Forgot your password ?</a></div>
-                <input class="btnn" type="submit" value="Click to Login" name="login"></input>
-                </form>
-                <p class="link">Don't have an account?<br>
-                <a href="register.php">Sign up</a> here</a></p>
-                <!-- <p class="liw">or<br>Log in with</p>
-                <div class="icon">
-                    &emsp;&emsp;&emsp;&ensp;<a href="https://www.facebook.com/"><ion-icon name="logo-facebook"></ion-icon> </a>&nbsp;&nbsp;
-                    <a href="https://www.instagram.com/"><ion-icon name="logo-instagram"></ion-icon> </a>&ensp;
-                    <a href="https://myaccount.google.com/"><ion-icon name="logo-google"></ion-icon> </a>&ensp;
-                    
-                </div> -->
-            </div>
-        </div>
+      </div>
     </div>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-</body>
-</html>
+  
+    <div class="column">
+      <div class="card">
+        <img src="images/honda.jpg" alt="Mike" style="width:100%">
+        <div class="container">
+          <h2>HONDA CITY</h2>
+          <p class="title">ND- HONDA</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>mike@example.com</p>
+          <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="column">
+        <div class="card">
+          <img src="images/mercedes.jpg" alt="Mike" style="width:100%">
+          <div class="container">
+            <h2>MERCEDES BENZ</h2>
+            <p class="title">ND- MERCEDES</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>mike@example.com</p>
+            <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+          </div>
+        </div>
+      </div>
+
+    <div class="column">
+        <div class="card" >
+          <img src="images/thar.jpg" alt="Mike" style="width:100%">
+          <div class="container">
+            <h2>THAR</h2>
+            <p class="title">ND- MAHINDRA</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>mike@example.com</p>
+            <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+          </div>
+        </div>
+      </div>
+
+    <div class="column">
+      <div class="card">
+        <img src="images/toyota.jpg" alt="John" style="width:100%">
+        <div class="container">
+          <h2>TOYOTA INNOVA CRYSTA</h2>
+          <p class="title">ND- TOYOTA</p>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <p>john@example.com</p>
+          <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+          <img src="images/audi.jpg" alt="Mike" style="width:100%">
+          <div class="container">
+            <h2>AUDI</h2>
+            <p class="title">ND- AUDI</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>mike@example.com</p>
+            <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="column" style="position: absolute; left: 0%; top: 266.5%;">
+        <div class="card" >
+          <img src="images/lamborghini.webp" alt="Jane" style="width:100%">
+          <div class="container">
+            <h2>LAMBORGHINI</h2>
+            <p class="title">ND- LAMBORGHINI</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>jane@example.com</p>
+            <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="column" style="position: absolute; left: 33.3%; top: 266.5%;">
+        <div class="card">
+          <img src="images/bmw.jpg" alt="Jane" style="width:100%">
+          <div class="container">
+            <h2>BMW</h2>
+            <p class="title">ND- BMW</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>jane@example.com</p>
+            <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column" >
+        <div class="card">
+          <img src="images/porsche.jpg" alt="Jane" style="width:100%">
+          <div class="container">
+            <h2>PORSCHE</h2>
+            <p class="title">ND- PORSCHE</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>jane@example.com</p>
+            <p><button class="button"><a href="index1.php" style="color: white; font-weight: bold;">BOOK NOW</a></button></p>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="copy">&copy; 2024 Developer <BR>Copyright 1999-2024 by Refsnes Data. All Rights Reserved.<BR>The ND CAR LEASE is an online platform that facilitates access to the best travel deals by directing consumers to travel providers. We provide our own travel services or quotes. While the ND CAR LEASE connects the general public to our travel services. All prices are subject to availability. Although we aim to provide our users with the cheapest rates.</div>
+    <div class="bottom-links">
+      <div class="links">
+        <span>CONTACT US</span>
+        <a > EMAIL ID: ndcar@gmail.com</a>
+        <a >CONTACT NO.: xxxxxxxxxx</a>
+        <a></a>
+        <a></a>
+      </div>
+      
+      <div class="links">
+        <span>Social Links</span>
+        <ul>     
+            <a href="#" class="fa fa-facebook"> </a>   
+            
+            <a href="#" class="fa fa-twitter"> </a>  
+             
+            <a href="#" class="fa fa-linkedin"> </a>  
+           
+            <a href="#" class="fa fa-instagram"> </a>  
+             
+            <a href="#" class="fa fa-google"> </a>  
+            
+            </ul>
+      </div> 
+    </div>
+    
+  </footer>
+
+  </body>
+  </html>

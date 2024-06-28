@@ -248,7 +248,7 @@ ul li a:hover{
         
         if(!isset($_SESSION['email'])) // The exact conditional depends on your login-system implementation
     {
-        header('Location: index.php'); // Instructs the visitor's browser to redirect
+        header('Location: index1.php'); // Instructs the visitor's browser to redirect
         exit; // <-- What you want. Prevents further code from being executed, works as a security measure.
     }
         
@@ -265,7 +265,7 @@ ul li a:hover{
     //     if($email == "email" ){
     //         $_SESSION['email']="email";
     //         // $_SESSION['password']="password";
-    //         header("location:index.php");
+    //         header("location:index1.php");
     // }
     // else header("location:cardetails.php");
     // ob_end_flush();

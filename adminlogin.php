@@ -222,7 +222,7 @@
         <input class="h" type="text" name="adid" placeholder="Enter admin user id">
         <input class="h" type="password" name="adpass" placeholder="Enter admin password">
         <input type="submit" class="btnn" value="LOGIN" name="adlog">
-        <button class="back"><a href="index.php">BACK</a></button>
+        <button class="back"><a href="index1.php">BACK</a></button>
     </form>
 
 
